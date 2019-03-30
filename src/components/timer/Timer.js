@@ -4,7 +4,7 @@ export class Timer extends Component {
   render() {
     return (
       <div>
-        xD i am timer D>
+        acquia as TIMER TIMER
       </div>
     )
   }

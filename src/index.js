@@ -6,7 +6,8 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import Home from './components/pages/Home'
 import About from './components/pages/About'
 import App from './components/todos/App'; // TODO App
-import Timer from './components/timer/Timer'
+import ClickerApp from './components/clicker/ClickerApp'
+import TimerApp from './components/timer/TimerApp'
 
 const routing = (
   <Router>
@@ -18,8 +19,8 @@ const routing = (
             <a href="#!" id="menuLink1" className="pure-menu-link">Apps</a>
             <ul className="pure-menu-children">
               <li className="pure-menu-item"><Link to="./todo" className="pure-menu-link">To do</Link></li>
-              <li className="pure-menu-item"><Link to="./timer" className="pure-menu-link">Timer</Link></li>
               <li className="pure-menu-item"><Link to="./clicker" className="pure-menu-link">Clicker</Link></li>
+              <li className="pure-menu-item"><Link to="./timer" className="pure-menu-link">Timer</Link></li>
               <li className="pure-menu-item"><Link to="#" className="pure-menu-link">Timer</Link></li>
             </ul>
           </li>
@@ -31,7 +32,8 @@ const routing = (
 
       <Route exact path="/react-sample/" component={Home} />
       <Route path="/react-sample/todo" component={App} />
-      <Route path="/react-sample/timer" component={Timer} />
+      <Route path="/react-sample/clicker" component={ClickerApp} />
+      <Route path="/react-sample/timer" component={TimerApp} />
       <Route path="/react-sample/about" component={About} />
     </div>
   </Router >

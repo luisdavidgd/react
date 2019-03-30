@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Header from './Header'
+import Header from '../layouts/Header'
 import Todos from './Todos'
 import AddTodo from './AddTodo'
 export class App extends Component {
   state = {
+    title: 'To Do App',
     todos: [
       { id: Math.random(), title: 'Take out the trash', completed: false },
       { id: Math.random(), title: 'Dinner with wife', completed: false },
@@ -44,7 +45,7 @@ export class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <Header />
+          <Header title={this.state.title} />
           <AddTodo
             addTodo={this.addTodo} />
           <Todos
