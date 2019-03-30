@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Header from './components/layout/Header'
-import Todos from './components/Todos'
-import AddTodo from './components/AddTodo'
-import './App.css';
+import Header from './Header'
+import Todos from './Todos'
+import AddTodo from './AddTodo'
 export class App extends Component {
   state = {
     todos: [
@@ -38,7 +37,7 @@ export class App extends Component {
       title,
       completed: false
     }
-    this.setState({todos: [...this.state.todos, newTodo]})
+    this.setState({ todos: [...this.state.todos, newTodo] })
   }
 
   render() {

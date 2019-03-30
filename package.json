@@ -2,7 +2,7 @@
   "name": "react-sample",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luda.ga/react-sample",
+  "homepage": "https://luda.ga/react-sample/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
