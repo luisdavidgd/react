@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Header = (props) => (
-  <div>
+  <header className="App-header" >
     <h1>{props.title}</h1>
-  </div>
+  </header>
 );
 
 Header.defaultProps = {

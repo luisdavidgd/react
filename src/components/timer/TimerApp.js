@@ -8,7 +8,7 @@ export class TimerApp extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="App">
                 <Header title={this.state.title} />
                 <Timer />
       </div>

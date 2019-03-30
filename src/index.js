@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
+// import CSS
+import './index.css'
+
 // import components
 import Home from './components/pages/Home'
 import About from './components/pages/About'
@@ -21,7 +24,6 @@ const routing = (
               <li className="pure-menu-item"><Link to="./todo" className="pure-menu-link">To do</Link></li>
               <li className="pure-menu-item"><Link to="./clicker" className="pure-menu-link">Clicker</Link></li>
               <li className="pure-menu-item"><Link to="./timer" className="pure-menu-link">Timer</Link></li>
-              <li className="pure-menu-item"><Link to="#" className="pure-menu-link">Timer</Link></li>
             </ul>
           </li>
           <li className="pure-menu-item">
