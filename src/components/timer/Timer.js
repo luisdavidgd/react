@@ -4,7 +4,7 @@ export class Timer extends Component {
   render() {
     return (
       <div>
-        Sorry, we lost this section code. xD
+        <p>Sorry, we lost this section code. xD</p>
       </div>
     )
   }

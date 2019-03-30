@@ -8,10 +8,10 @@ export class ClickerApp extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="App">
                 <Header title={this.state.title} />
                 <Clicker />
-      </div>
+            </div>
         )
     }
 }

@@ -29,23 +29,11 @@ class Clicker extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="clicker border border-secondary rounded">
-          <div className="clicker-display d-flex align-items-center bg-light text-secondary">
-            <div className="mx-auto display-1">{this.state.count}</div>
-          </div>
-          <div className="clicker-button-panel d-flex flex-row">
-            <button className="pure btn-success w-100" onClick={this.incrementCount}>
-              +
-            </button>
-            <button className="btn btn-warning w-100" onClick={this.resetCount}>
-              reset
-            </button>
-            <button className="btn btn-danger w-100" onClick={this.decrementCount}>
-              -
-            </button>
-          </div>
-        </div>
+      <div>
+        <h2>{this.state.count}</h2>
+        <button className="pure-button" onClick={this.incrementCount}>+</button>
+        <button className="pure-button" onClick={this.resetCount}>reset</button>
+        <button className="pure-button" onClick={this.decrementCount}>-</button>
       </div>
     );
   }
