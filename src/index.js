@@ -12,6 +12,9 @@ import App from './components/todos/App'; // TODO App
 import ClickerApp from './components/clicker/ClickerApp'
 import TimerApp from './components/timer/TimerApp'
 
+// Shopping Cart
+import CartApp from './components/cart/CartApp'
+
 const routing = (
   <Router>
     <div>
@@ -42,4 +45,5 @@ const routing = (
 )
 
 ReactDOM.render(routing, document.getElementById('root'));
+ReactDOM.render(<CartApp />, document.getElementById('shopping-cart'));
 

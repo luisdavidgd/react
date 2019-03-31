@@ -31,9 +31,9 @@ class Clicker extends Component {
     return (
       <div>
         <h2>{this.state.count}</h2>
-        <button className="pure-button" onClick={this.incrementCount}>+</button>
-        <button className="pure-button" onClick={this.resetCount}>reset</button>
-        <button className="pure-button" onClick={this.decrementCount}>-</button>
+        <button className="pure-button button-success" onClick={this.incrementCount}><i class="fas fa-plus"></i></button>
+        <button className="pure-button button-warning" onClick={this.resetCount}><i class="fas fa-sync"></i></button>
+        <button className="pure-button button-error" onClick={this.decrementCount}><i class="fas fa-minus"></i></button>
       </div>
     );
   }

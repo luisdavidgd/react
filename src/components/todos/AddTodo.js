@@ -35,7 +35,7 @@ export class AddTodo extends Component {
                         <button
                             type="submit"
                             className="pure-button pure-input-1"
-                        >Submit </button>
+                        >Add ToDo </button>
                     </div>
                 </form>
             </div>

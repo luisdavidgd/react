@@ -44,15 +44,13 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <Header title={this.state.title} />
-          <AddTodo
-            addTodo={this.addTodo} />
-          <Todos
-            todos={this.state.todos}
-            markComplete={this.markComplete}
-            delTodo={this.delTodo} />
-        </div>
+        <Header title={this.state.title} />
+        <AddTodo
+          addTodo={this.addTodo} />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo} />
       </div>
     )
   }
