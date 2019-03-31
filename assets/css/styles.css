@@ -59,6 +59,9 @@ h3 {
     display: inline-block;
     *display: inline;
     zoom: 1;
+    /* custom */
+    padding-left: 2px;
+    padding-right: 2px;
 }
 .nav-item a {
     background: transparent;
