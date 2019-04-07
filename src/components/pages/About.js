@@ -6,7 +6,7 @@ export default function About() {
       <header className="App-title">
         <h1>About</h1>
       </header>
-      <p>This is other page, come on, you know it.</p>
+      <p>This is other page, come on, you know it. Just anthoer dummy text.</p>
     </div>
   )
 }

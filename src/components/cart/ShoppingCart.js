@@ -4,7 +4,7 @@ export class ShoppingCart extends Component {
     render() {
         return (
             <div>
-                <p>Here Shopping cart demo, features, etc...</p>
+                <p>Here Shopping cart demo, classic features, invoices, etc.</p>
             </div>
         )
     }
