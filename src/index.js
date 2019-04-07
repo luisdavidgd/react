@@ -14,7 +14,7 @@ import TimerApp from './components/timer/TimerApp'
 
 // Shopping Cart
 import CartApp from './components/cart/CartApp'
-
+const url = window.location.pathname;
 const routing = (
   <Router>
     <div>
@@ -22,7 +22,7 @@ const routing = (
         <Link to="./" className="pure-menu-heading pure-menu-link">React JS</Link>
         <ul className="pure-menu-list">
           <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-            <a href="#!" id="menuLink1" className="pure-menu-link">Apps</a>
+            <a href="!#" id="menuLink1" className="pure-menu-link">Apps</a>
             <ul className="pure-menu-children">
               <li className="pure-menu-item"><Link to="./todo" className="pure-menu-link">To do</Link></li>
               <li className="pure-menu-item"><Link to="./clicker" className="pure-menu-link">Clicker</Link></li>
@@ -34,12 +34,11 @@ const routing = (
           </li>
         </ul>
       </div>
-
-      <Route exact path="/react-sample/" component={Home} />
-      <Route path="/react-sample/todo" component={App} />
-      <Route path="/react-sample/clicker" component={ClickerApp} />
-      <Route path="/react-sample/timer" component={TimerApp} />
-      <Route path="/react-sample/about" component={About} />
+      <Route exact path={url} component={Home} />
+      <Route path={url + 'todo'} component={App} />
+      <Route path={url + 'clicker'} component={ClickerApp} />
+      <Route path={url + 'timer'} component={TimerApp} />
+      <Route path={url + 'about'} component={About} />
     </div>
   </Router >
 )
