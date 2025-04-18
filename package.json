@@ -2,9 +2,9 @@
   "name": "react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luda.ga/react/",
+  "homepage": "https://luisdavidgd.github.io/react",
   "dependencies": {
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^6.3.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
