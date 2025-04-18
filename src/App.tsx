@@ -1,25 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Counter from './pages/Counter'
+import Todo from './pages/Todo'
+import Timer from './pages/Timer'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Counter />} />
+        <Route path="/todo" element={<Todo />} />
+        <Route path="/timer" element={<Timer />} />
+      </Routes>
     </>
   )
 }
-
-export default App
