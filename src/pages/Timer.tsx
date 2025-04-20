@@ -1,10 +1,18 @@
 import React from 'react'
 
-export default class Timer extends React.Component {
+interface TimerState {
+    inputMinutes: number
+    duration: number
+    remaining: number
+    isRunning: boolean
+}
+
+export default class Timer extends React.Component<{}, TimerState> {
     intervalId: number | undefined
-    state = {
-        inputMinutes: 5, // minutos configurables
-        duration: 300, // en segundos
+
+    state: TimerState = {
+        inputMinutes: 5,
+        duration: 300,
         remaining: 300,
         isRunning: false
     }
@@ -32,9 +40,9 @@ export default class Timer extends React.Component {
             this.setState(prev => {
                 if (prev.remaining <= 1) {
                     window.clearInterval(this.intervalId)
-                    return { isRunning: false, remaining: 0 }
+                    return { ...prev, isRunning: false, remaining: 0 }
                 }
-                return { remaining: prev.remaining - 1 }
+                return { ...prev, remaining: prev.remaining - 1 }
             })
         }, 1000)
     }
