@@ -4,7 +4,6 @@ import Home from './pages/Home'
 import Counter from './pages/Counter'
 import Todo from './pages/Todo'
 import Timer from './pages/Timer'
-import './App.css'
 
 export default function App() {
   return (

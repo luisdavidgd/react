@@ -62,7 +62,7 @@ const Todo = () => {
         const [moved] = newTasks.splice(result.source.index, 1)
         newTasks.splice(result.destination.index, 0, moved)
 
-        // Si hay filtro activo, actualizamos tareas completas manteniendo las demás
+        // Update the original tasks array with the new order
         if (filter === 'all') {
             setTasks(newTasks)
         } else {
@@ -87,9 +87,8 @@ const Todo = () => {
                     onChange={(e) => setNewTask(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && addTask()}
                 />
-                <button onClick={addTask} className="px-3 py-1 bg-blue-500 text-white rounded">
-                    Add
-                </button>
+                <button className="rounded px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition"
+                    onClick={addTask} >Add</button>
             </div>
 
             <div className="flex gap-2 justify-center text-sm">
@@ -110,7 +109,7 @@ const Todo = () => {
                                 <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
                                     {(provided) => (
                                         <li
-                                            className="flex items-center gap-2 bg-white shadow p-2 rounded"
+                                            className="flex items-center gap-2 shadow p-2 rounded"
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
