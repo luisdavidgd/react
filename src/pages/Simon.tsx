@@ -88,7 +88,6 @@ export default function Simon() {
     // Handle player input
     function handleClick(color: string) {
         if (locked) return
-        vibrateOk()
         const nextPlayer = [...player, color]
         setPlayer(nextPlayer)
         setFlashing(color)
@@ -98,7 +97,6 @@ export default function Simon() {
         // Check sequence
         for (let i = 0; i < nextPlayer.length; i++) {
             if (nextPlayer[i] !== sequence[i]) {
-                vibrateError()
                 setMessage("You lost! Click Restart.")
                 setLocked(true)
                 playErrorSound()
@@ -106,19 +104,10 @@ export default function Simon() {
             }
         }
         if (nextPlayer.length === sequence.length) {
-            vibrateOk()
             setMessage("Correct! Next round...")
             setLocked(true)
             setTimeout(() => nextRound(), 1000)
         }
-    }
-
-    function vibrateOk() {
-        if (window.navigator.vibrate) window.navigator.vibrate(100)
-    }
-
-    function vibrateError() {
-        if (window.navigator.vibrate) window.navigator.vibrate([200, 100, 200])
     }
 
     function startGame() {
