@@ -20,7 +20,7 @@ export default function Simon() {
     const [locked, setLocked] = useState(true)
     const [message, setMessage] = useState("Click Start to play!")
     const [round, setRound] = useState(0)
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const timeoutRef = useRef<number | null>(null)
     const [flashing, setFlashing] = useState<string | null>(null)
     const [started, setStarted] = useState(false)
 
