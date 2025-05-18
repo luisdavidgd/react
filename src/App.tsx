@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Counter from './pages/Counter'
 import Todo from './pages/Todo'
 import Timer from './pages/Timer'
+import Simon from './pages/Simon'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/counter" element={<Counter />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/timer" element={<Timer />} />
+        <Route path="/simon" element={<Simon />} />
       </Routes>
     </>
   )
