@@ -11,14 +11,16 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/counter" element={<Counter />} />
-        <Route path="/todo" element={<Todo />} />
-        <Route path="/timer" element={<Timer />} />
-        <Route path="/simon" element={<Simon />} />
-        <Route path="/tic-tac-toe" element={<Board />} />
-      </Routes>
+      <div className="pt-18">
+        <Routes >
+          <Route path="/" element={<Home />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/timer" element={<Timer />} />
+          <Route path="/simon" element={<Simon />} />
+          <Route path="/tic-tac-toe" element={<Board />} />
+        </Routes>
+      </div>
     </>
   )
 }
