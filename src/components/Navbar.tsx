@@ -9,6 +9,7 @@ export default function Navbar() {
         <Link to="/todo" className="hover:text-indigo-400">To-Do</Link>
         <Link to="/timer" className="hover:text-indigo-400">Timer</Link>
         <Link to="/simon" className="hover:text-indigo-400">Simon</Link>
+        <Link to="/tic-tac-toe" className="hover:text-indigo-400">Tic Tac Toe</Link>
       </div>
     </nav>
   )
