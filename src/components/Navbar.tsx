@@ -5,7 +5,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="w-full px-4 py-3 shadow mb-4 bg-white dark:bg-gray-900">
+    <nav className="fixed top-0 left-0 z-50 w-full px-4 py-3 shadow mb-4 bg-white dark:bg-gray-900">
       <div className="container mx-auto flex items-center justify-between">
         <span className="font-bold text-lg">
           <NavLink to="/" >React</NavLink>
