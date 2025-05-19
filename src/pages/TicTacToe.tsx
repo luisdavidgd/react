@@ -7,7 +7,8 @@ type SquareProps = {
 
 function Square({ value, onSquareClick }: SquareProps) {
   return (
-    <button className="w-16 h-16 border border-gray-400 text-2xl font-bold flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+    <button
+      className="w-16 h-16 border border-gray-400 text-2xl font-bold flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition"
       onClick={onSquareClick}>
       {value}
     </button>
@@ -83,19 +84,23 @@ export default function Game() {
     }
     return (
       <li className="text-center" key={move}>
-        <button className="mt-4 px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
+        <button
+          className="mt-1 px-2 py-1 w-50 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
           onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
 
   return (
-    <div className="flex flex-col gap-2 items-center">
+    <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start justify-center w-full">
+      {/* Board */}
       <div className="flex flex-col gap-2 items-center">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div className="flex flex-col gap-2 items-center">
-        <ol>{moves}</ol>
+      {/* History */}
+      <div className="flex flex-col gap-2 items-center w-full lg:w-64 max-w-xs">
+        <h3 className="text-lg font-semibold">History</h3>
+        <ol className="w-full max-h-96 overflow-auto">{moves}</ol>
       </div>
     </div>
   );
