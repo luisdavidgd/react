@@ -1,6 +1,18 @@
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
+// Define your menu links as an array of objects
+const menuLinks = [
+  // Utilities section
+  { label: "Counter", to: "/counter" },
+  { label: "To-Do", to: "/todo" },
+  { label: "Timer", to: "/timer" },
+  // Games section
+  { label: "Simon", to: "/simon" },
+  { label: "Tic Tac Toe", to: "/tic-tac-toe" },
+  { label: "Hangman", to: "/hangman" },
+]
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
@@ -23,21 +35,31 @@ export default function Navbar() {
         </button>
         {/* Desktop links */}
         <div className="hidden lg:flex gap-4">
-          <NavLink to="/counter" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}>Counter</NavLink>
-          <NavLink to="/todo" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}>To-Do</NavLink>
-          <NavLink to="/timer" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}>Timer</NavLink>
-          <NavLink to="/simon" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}>Simon</NavLink>
-          <NavLink to="/tic-tac-toe" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}>Tic Tac Toe</NavLink>
+          {menuLinks.map(link => (
+            <NavLink
+              key={link.label}
+              to={link.to}
+              className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </div>
       </div>
       {/* Mobile links */}
       {open && (
         <div className="flex flex-col gap-2 mt-2 lg:hidden">
-          <NavLink to="/counter" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")} onClick={() => setOpen(false)}>Counter</NavLink>
-          <NavLink to="/todo" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")} onClick={() => setOpen(false)}>To-Do</NavLink>
-          <NavLink to="/timer" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")} onClick={() => setOpen(false)}>Timer</NavLink>
-          <NavLink to="/simon" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")} onClick={() => setOpen(false)}>Simon</NavLink>
-          <NavLink to="/tic-tac-toe" className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")} onClick={() => setOpen(false)}>Tic Tac Toe</NavLink>
+          {menuLinks.map(link => (
+            <NavLink
+              key={link.label}
+              to={link.to}
+              className={({ isActive }) => "hover:text-indigo-400" + (isActive ? " font-bold text-indigo-400" : "")}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+          
         </div>
       )}
     </nav>
