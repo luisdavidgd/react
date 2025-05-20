@@ -18,8 +18,6 @@ async function fetchRandomWord(lang: string): Promise<string> {
         : `https://random-word-api.herokuapp.com/word?lang=${lang}`
     const res = await fetch(url)
     const data = await res.json()
-    // const data = ['Paracaídas']
-    console.log(data)
     return data[0]
 }
 
