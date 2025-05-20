@@ -110,7 +110,7 @@ export default function Hangman() {
                 </select>
             </div>
             <div className="text-4xl font-mono tracking-widest mb-4">
-                {word.split("").map((l, i) =>
+                {word.split("").map((l) =>
                     !isLetter(l)
                         ? (l === " " ? "\u00A0" : l) // Show dot for space, else show char
                         : (guessed.includes(normalizeLetter(l)) || isLoser ? l : "_")
