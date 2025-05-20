@@ -4,13 +4,22 @@ function removeAccents(str: string) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
 
+function isLetter(char: string) {
+    return /[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(char)
+}
+
+function normalizeLetter(char: string) {
+    return removeAccents(char.toLowerCase())
+}
+
 async function fetchRandomWord(lang: string): Promise<string> {
-    // Use lang parameter for API
     const url = lang === "en"
         ? "https://random-word-api.herokuapp.com/word"
         : `https://random-word-api.herokuapp.com/word?lang=${lang}`
     const res = await fetch(url)
     const data = await res.json()
+    // const data = ['Paracaídas']
+    console.log(data)
     return data[0]
 }
 
@@ -20,9 +29,9 @@ export default function Hangman() {
     const [wrong, setWrong] = useState<string[]>([])
     const [loading, setLoading] = useState(true)
     const [lang, setLang] = useState<"en" | "es">("es")
+    const [pressedKey, setPressedKey] = useState<string | null>(null)
     const maxTries = 6
 
-    // Fetch a new word on mount or when lang changes
     useEffect(() => {
         setLoading(true)
         fetchRandomWord(lang).then(w => {
@@ -33,12 +42,16 @@ export default function Hangman() {
         })
     }, [lang])
 
-    const isWinner = word && word.split("").every(l => guessed.includes(removeAccents(l)))
+    const isWinner = word &&
+        word.split("").every(l =>
+            !isLetter(l) || guessed.includes(normalizeLetter(l))
+        )
     const isLoser = wrong.length >= maxTries
 
     function handleGuess(letter: string) {
+        letter = normalizeLetter(letter)
         if (guessed.includes(letter) || wrong.includes(letter) || isWinner || isLoser) return
-        const plainWord = removeAccents(word)
+        const plainWord = removeAccents(word.toLowerCase())
         if (plainWord.includes(letter)) {
             setGuessed([...guessed, letter])
         } else {
@@ -55,6 +68,27 @@ export default function Hangman() {
             setLoading(false)
         })
     }
+
+    // Keyboard support and button press effect
+    useEffect(() => {
+        function onKeyDown(e: KeyboardEvent) {
+            const letter = e.key.toLowerCase()
+            if (letter.length === 1 && letter >= "a" && letter <= "z") {
+                setPressedKey(letter)
+                handleGuess(letter)
+            }
+        }
+        window.addEventListener("keydown", onKeyDown)
+        return () => window.removeEventListener("keydown", onKeyDown)
+    }, [guessed, wrong, isWinner, isLoser, word])
+
+    // Remove pressed effect after 150ms
+    useEffect(() => {
+        if (pressedKey) {
+            const timeout = setTimeout(() => setPressedKey(null), 150)
+            return () => clearTimeout(timeout)
+        }
+    }, [pressedKey])
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
 
@@ -79,7 +113,9 @@ export default function Hangman() {
             </div>
             <div className="text-4xl font-mono tracking-widest mb-4">
                 {word.split("").map((l, i) =>
-                    guessed.includes(removeAccents(l)) || isLoser ? l : "_"
+                    !isLetter(l)
+                        ? (l === " " ? "\u00A0" : l) // Show dot for space, else show char
+                        : (guessed.includes(normalizeLetter(l)) || isLoser ? l : "_")
                 ).join(" ")}
             </div>
             <div className="text-red-600 mb-2">
@@ -89,7 +125,12 @@ export default function Hangman() {
                 {alphabet.map(l => (
                     <button
                         key={l}
-                        className={`px-2 py-1 rounded border ${guessed.includes(l) || wrong.includes(l) ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-indigo-100 hover:bg-indigo-300 dark:bg-gray-700 dark:hover:bg-gray-600"} transition`}
+                        className={`px-2 py-1 rounded border transition
+                            ${guessed.includes(l) || wrong.includes(l)
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "bg-indigo-100 hover:bg-indigo-300 dark:bg-gray-700 dark:hover:bg-gray-600"}
+                            ${pressedKey === l ? "scale-90 ring-2 ring-indigo-400" : ""}
+                        `}
                         onClick={() => handleGuess(l)}
                         disabled={guessed.includes(l) || wrong.includes(l) || isWinner || isLoser}
                     >
